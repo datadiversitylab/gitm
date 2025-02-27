@@ -2,4 +2,4 @@
 permalink: /index.html
 ---
 
-# gitm.github.io
+# https://datadiversitylab.github.io/gitm/
