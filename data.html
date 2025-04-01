@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Species Data Table</title>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  
+  <!-- DataTables CSS -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.min.css" />
+
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(to right, #66bb6a, #42a5f5);
+      color: #000000;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    header {
+      padding: 25px;
+      color: white;
+    }
+    .title { font-size: 36px; margin: 15px 0; font-family: 'Lato', sans-serif; }
+    nav { display: flex; justify-content: center; background-color: #004d40; padding: 15px; }
+    nav ul { list-style: none; display: flex; gap: 20px; margin: 0; padding: 0; }
+    nav ul li a { text-decoration: none; color: white; font-size: 16px; padding: 15px 15px; }
+    nav ul li a:hover { background-color: #00695c; border-radius: 5px; }
+    .sectionloc {
+    width: 95%;
+    max-width: 1400px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #f0f4c3;
+    border-radius: 10px;
+    font-size: 16px;
+    overflow-x: auto; /* Add horizontal scrolling for smaller screens */
+  }
+
+  table {
+    width: 100%; /* Make the table take up the full width of the container */
+    margin: 0 auto; /* Center the table */
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+
+  th {
+    background-color: #004d40;
+    color: white;
+  }
+  </style>
+
+  <!-- jQuery (required for DataTables) -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- DataTables JS -->
+  <script src="https://cdn.datatables.net/2.2.2/js/dataTables.min.js"></script>
+  
+  <script>
+    $(document).ready(function () {
+      console.log("Initializing DataTable...");
+      let table = $('#speciesTable').DataTable({
+        "paging": true,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "pageLength": 10,
+        "responsive": true
+      });
+
+      console.log("DataTable initialized.");
+
+      // Load hardcoded data
+      function loadHardcodedData() {
+        console.log("Loading hardcoded data...");
+        let sampleData = [
+          ["Aldabrachelys gigantea", "0", "2", "", "0", "Aldabra Atoll"],
+          ["Aldabrachelys grandidieri", "0", "2", "", "0", "Madagasgar"],
+          ["Astrochelys radiata", "0", "2", "", "0", ""],
+          ["Astrochelys yniphora", "0", "2", "", "0", ""],
+          ["Centrochelys sulcata", "0", "1", "", "0", ""],
+          ["Chelonoidis abingdonii", "1", "2", "0.615253, -90.790952", "60", "Pinta island (likely extinct)"],
+          ["Chelonoidis becki", "1", "2", "0.041399, -91.337196", "4670", "wolf volcano isabela"],
+          ["Chelonoidis carbonarius", "0", "1", "", "0", ""],
+          ["Chelonoidis chathamensis", "1", "2", "-0.810731, -89.416523", "557.88", "San Cristobal Island"],
+          ["Chelonoidis chilensis", "0", "1", "", "0", ""],
+          ["Chelonoidis darwini", "1", "2", "-0.287703, -90.620062", "572", "Santiago Island"],
+          ["Chelonoidis denticulatus", "0", "0", "", "0", ""],
+          ["Chelonoidis duncanensis", "1", "2", "-0.613271, -90.656404", "18", "pinzon island"],
+          ["Chelonoidis hoodensis", "1", "2", "-1.374332, -89.658942", "60", "Espanola Island"],
+          ["Chelonoidis niger", "1", "2", "-1.284933, -90.409078", "173", "Floreana"],
+          ["Chelonoidis phantastica", "1", "2", "-0.370006, -91.452798", "642", "Fernandina Island (extinct)"],
+          ["Chelonoidis porteri", "1", "2", "-0.584209, -90.254497", "986.008", "santa cruz island"],
+          ["Chelonoidis vicina", "1", "2", "-0.942820, -91.392504", "4670", "Cerro azul Volcano on Isabela Island"],
+          ["Chersina angulata", "0", "1", "", "0", ""]
+        ];
+
+        // Clear existing data in the DataTable
+        table.clear();
+
+        // Add rows to the DataTable
+        sampleData.forEach(row => {
+          console.log("Adding row:", row); // Debugging: Log each row being added
+          table.row.add(row);
+        });
+
+        // Redraw the DataTable to reflect the new data
+        table.draw();
+
+        console.log("Data appended to table.");
+      }
+
+      // Call the function to load the hardcoded data on page load
+      loadHardcodedData();
+    });
+  </script>
+</head>
+<body>
+  <header>
+    <h1 class="title">Species Data Table</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <section class="sectionloc">
+    <h2>Interactive Species Table</h2>
+    <table id="speciesTable" class="display nowrap" style="width:100%">
+      <thead>
+        <tr>
+          <th>Species</th>
+          <th>Galápagos (binary)</th>
+          <th>Islands (multistate)</th>
+          <th>Latitude, Longitude</th>
+          <th>Island Size (km²)</th>
+          <th>Island Location</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Species Data Project</p>
+  </footer>
+</body>
+</html>
