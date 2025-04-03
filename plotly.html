@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+
+  <div id="tortoisePlot"></div>
+
+  <script>
+    // Define the species and corresponding carapace lengths
+    const species = [
+      "Aldabrachelys gigantea", "Aldabrachelys grandidieri", "Pyxis arachnoides", "Pyxis planicauda", 
+      "Astrochelys radiata", "Astrochelys yniphora", "Centrochelys sulcata", "Geochelone elegans", 
+      "Geochelone platynota", "Chelonoidis abingdonii", "Chelonoidis becki", "Chelonoidis duncanensis",
+      "Chelonoidis hoodensis", "Chelonoidis nigra", "Chelonoidis phantastica", "Chelonoidis porteri"
+    ];
+
+    const carapaceLengths = [119.0, 125.0, 15.0, 16.0, 40.0, 44.6, 85.0, 38.0, 35.0, 98.0, 105.0, 84.0, 81.3, 130.0, 86.0, 150.0];
+
+    // Define colors based on whether species is from the Galápagos
+    const galapagosBinary = [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1];
+    const colors = galapagosBinary.map(value => value === 1 ? "blue" : "green");
+
+    // Create scatter plot
+    const data = [{
+      x: species,
+      y: carapaceLengths,
+      mode: "markers",
+      marker: { color: colors, size: 10 },
+      text: species,
+      type: "scatter"
+    }];
+
+    // Layout options
+    const layout = {
+      title: "Tortoise Species and Carapace Length",
+      xaxis: { title: "Species", tickangle: -45 },
+      yaxis: { title: "Carapace Length (cm)" }
+    };
+
+    // Render the plot
+    Plotly.newPlot("tortoisePlot", data, layout);
+  </script>
+
+</body>
+</html>
