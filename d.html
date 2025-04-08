@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSV Data Table</title>
+  
+  <!-- DataTables CSS -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.min.css" />
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #66bb6a, #42a5f5);
+      margin: 0; padding: 0; text-align: center;
+    }
+    .container {
+      width: 90%;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f0f4c3;
+      border-radius: 10px;
+      overflow-x: auto; /* allow horizontal scroll if needed */
+    }
+    table {
+      width: 100%;
+      margin: 0 auto;
+      border-collapse: collapse;
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 8px;
+      border: 1px solid #ddd;
+      text-align: left;
+      white-space: nowrap; /* prevents wrapping */
+    }
+    th {
+      background-color: #004d40;
+      color: #fff;
+    }
+    #csvFileInput {
+      margin: 20px auto;
+      display: block;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <h1>CSV Data Table</h1>
+  <div class="container">
+    <input type="file" id="csvFileInput" accept=".csv" />
+    <table id="dataTable">
+      <thead></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- DataTables -->
+  <script src="https://cdn.datatables.net/2.2.2/js/dataTables.min.js"></script>
+  <!-- PapaParse -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+
+  <script>
+    let table; // We'll store the DataTable instance here
+
+    $(document).ready(function () {
+      // 1. Wait for file input change
+      $('#csvFileInput').on('change', function (evt) {
+        let file = evt.target.files[0];
+        if (!file) return;
+
+        let reader = new FileReader();
+        reader.onload = function (e) {
+          let csvText = e.target.result;
+          Papa.parse(csvText, {
+            skipEmptyLines: true,
+            complete: function (results) {
+              let data = results.data;
+              console.log("Parsed CSV:", data);
+
+              // 2. Build <thead> from the first row:
+              if (!data.length) {
+                alert("CSV is empty!");
+                return;
+              }
+              let headerRow = data[0]; // First row
+              let theadHTML = "<tr>";
+              headerRow.forEach(col => {
+                theadHTML += `<th>${col}</th>`;
+              });
+              theadHTML += "</tr>";
+              $('#dataTable thead').html(theadHTML);
+
+              // 3. Destroy existing DataTable instance if any:
+              if (table) {
+                table.destroy(); // remove old columns, data, etc.
+              }
+
+              // 4. Re-initialize DataTable with the new columns
+              table = $('#dataTable').DataTable({
+                scrollX: true,    // horizontal scrolling for wide tables
+                paging: true,
+                searching: true,
+                ordering: true,
+                info: true,
+                pageLength: 10
+              });
+
+              // 5. Add the remaining rows to the new DataTable:
+              for (let i = 1; i < data.length; i++) {
+                let row = data[i];
+                // Only add non-empty rows
+                if (row.join("").trim() !== "") {
+                  table.row.add(row);
+                }
+              }
+
+              // 6. Draw the updated table
+              table.draw();
+            },
+            error: function (err) {
+              console.error("Error parsing CSV:", err);
+            }
+          });
+        };
+        reader.onerror = function () {
+          console.error("Error reading file");
+        };
+        reader.readAsText(file);
+      });
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+
