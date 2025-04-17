@@ -133,6 +133,9 @@
       background-color: #004d40;
       color: #fff;
     }
+    ol {
+      list-style-position: inside;
+    }
   </style>
 </head>
 <body>
@@ -172,14 +175,33 @@
   </header>
 
   <!-- CSV Data Table Section -->
-  <h1>CSV Data Table</h1>
+  <h1>Diversification Rates Results</h1>
   <div class="container">
     <table id="csv-table" class="display">
       <thead></thead>
       <tbody></tbody>
     </table>
   </div>
+  <div class="container">
 
+  <section class="sectionloc">
+          <h2>What does this table signify?</h2>
+          <p>Here we present a table that includes data for tortoise species that live across the world. In our project, we focus on tortoise species that live on the Galapagos Islands. In this analysis, we used MiSSE (Missing State Speciation and Extinction) to estimate diversification rates for the tortoise species presented here. Tortoise species that live on the Galapagos Islands (a 1 in the "On_Galapagos" column) have much higher diversification rates (seen in the "Net_Diversification" column) compared to the other tortoise species in our dataset. To sort the data, click on the column names.</p>
+          <p>Column definitions:
+          <ol>
+            <li>Species: various tortoise species around the world.</li>
+            <li>On_Galapagos: whether the species lives on the Galapagos Islands (1) or not (0).</li>
+            <li>Carapace_Length: the average carapace length of the species.</li>
+            <li>Island_Size: the size of the island where the species is found.</li>
+            <li>Turnover: the turnover rate of the species (Speciation + Extinction).</li>
+            <li>Net_Diversification: the net diversification rate of the species(Speciation - Extinction)</li>
+            <li>Speciation: the speciation rate of the species.</li>
+            <li>Extinction_Frac: Extinction fraction (Extiction/Speciation).</li>
+            <li>Extinction: the extinction rate of the species.</li>
+          </ol>  
+          </p>
+  </section>
+  </div>
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <!-- DataTables -->
@@ -194,7 +216,7 @@
         header: true,
         complete: function (results) {
           const data = results.data;
-          // Filter out empty or malformed rows
+          // Filter out empty rows
           const filteredData = data.filter(row => Object.values(row).some(cell => cell !== ''));
           
           // Build the table header
