@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSV Data Table - Galapagos Islands Testudinidae Macroevolution</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- DataTables CSS -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.dataTables.min.css" />
+
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(to right, #66bb6a, #42a5f5);
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    /* Header Section using Flexbox for balanced layout */
+    header {
+      padding: 25px;
+      color: white;
+    }
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+    /* The logo container holds the logo on the left */
+    .logo-container {
+      width: 150px;  /* Set this equal to the desired logo width */
+    }
+    .logo {
+      width: 200px;  /* Adjust the logo size as needed */
+      display: block;
+    }
+    /* The header text is centered using flex-grow */
+    .header-text {
+      flex: 1;
+      text-align: center;
+    }
+    /* The right-placeholder balances the left logo */
+    .right-placeholder {
+      width: 150px;  /* This value should match .logo-container's width */
+    }
+    .title {
+      font-size: 36px;
+      margin: 15px 0;
+      font-family: 'Lato', sans-serif;
+    }
+    .subtitle {
+      font-size: 18px;
+      margin: 10px 0;
+    }
+    .team-members {
+      font-size: 12px;
+      margin-top: 15px;
+      font-style: italic;
+    }
+
+    /* Navigation Bar Styles (exactly as in the index page) */
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #004d40;
+      padding: 15px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-size: 16px;
+      padding: 15px 15px;
+    }
+    nav ul li a:hover {
+      background-color: #00695c;
+      border-radius: 5px;
+    }
+    .submenu {
+      display: none;
+      position: absolute;
+      background-color: #00695c;
+      border-radius: 5px;
+      list-style: none;
+      margin-top: 10px;
+    }
+    nav ul li:hover .submenu {
+      display: block;
+    }
+    .submenu li a {
+      font-size: 14px;
+      padding: 2px;
+    }
+    .submenu li a:hover {
+      text-decoration: underline;
+    }
+
+    /* CSV Data Table and Container */
+    .container {
+      width: 90%;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #f0f4c3;
+      border-radius: 10px;
+      overflow-x: auto;
+    }
+    table {
+      width: 100%;
+      margin: 0 auto;
+      border-collapse: collapse;
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 8px;
+      border: 1px solid #ddd;
+      text-align: left;
+      white-space: nowrap;
+    }
+    th {
+      background-color: #004d40;
+      color: #fff;
+    }
+    ol {
+      list-style-position: inside;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <!-- Left-side Logo -->
+      <div class="logo-container">
+        <img src="tortoisenobackground.png" alt="Logo" class="logo">
+      </div>
+      <!-- Centered Header Text -->
+      <div class="header-text">
+        <h1 class="title">Galapagos Islands Testudinidae Macroevolution</h1>
+        <h2 class="subtitle">Macro-evolutionary Patterns of Giant Tortoises</h2>
+        <p class="team-members">Authors: Paige Cherry, Sara Cielaszyk, Hubert Kasprzycki and Eleanor Tuck</p>
+      </div>
+      <!-- Right-side Placeholder (invisible) for balance -->
+      <div class="right-placeholder"></div>
+    </div>
+
+    <!-- Nav Bar -->
+    <nav>
+      <ul>
+        <li><a href="index2.html">Home</a></li>
+        <li>
+          <a href="#">Data</a>
+          <ul class="submenu">
+            <li><a href="length_data.html">Length Data</a></li>
+            <li><a href="island_data.html">Island Data</a></li>
+            <li><a href="diversification_rates.html">Diversification Rates</a></li>
+            <li><a href="research_paper.pdf" target="_blank">Research Paper</a></li>
+          </ul>
+        </li>
+        <li><a href="teambios.html">References</a></li>
+        <li><a href="teambios.html">Team Bios &amp; Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- CSV Data Table Section -->
+  <h1>Diversification Rates Results</h1>
+  <div class="container">
+    <table id="csv-table" class="display">
+      <thead></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <div class="container">
+
+  <section class="sectionloc">
+          <h2>What does this table signify?</h2>
+          <p>Here we present a table that includes data for tortoise species that live across the world. In our project, we focus on tortoise species that live on the Galapagos Islands. In this analysis, we used MiSSE (Missing State Speciation and Extinction) to estimate diversification rates for the tortoise species presented here. Tortoise species that live on the Galapagos Islands (a 1 in the "On_Galapagos" column) have much higher diversification rates (seen in the "Net_Diversification" column) compared to the other tortoise species in our dataset. To sort the data, click on the column names.</p>
+          <p>Column definitions:
+          <ol>
+            <li>Species: various tortoise species around the world.</li>
+            <li>On_Galapagos: whether the species lives on the Galapagos Islands (1) or not (0).</li>
+            <li>Carapace_Length: the average carapace length of the species.</li>
+            <li>Island_Size: the size of the island where the species is found.</li>
+            <li>Turnover: the turnover rate of the species (Speciation + Extinction).</li>
+            <li>Net_Diversification: the net diversification rate of the species(Speciation - Extinction)</li>
+            <li>Speciation: the speciation rate of the species.</li>
+            <li>Extinction_Frac: Extinction fraction (Extiction/Speciation).</li>
+            <li>Extinction: the extinction rate of the species.</li>
+          </ol>  
+          </p>
+  </section>
+  </div>
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- DataTables -->
+  <script src="https://cdn.datatables.net/2.2.2/js/dataTables.min.js"></script>
+  <!-- PapaParse -->
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      Papa.parse('tip.rates.combo.csv', {
+        download: true,
+        header: true,
+        complete: function (results) {
+          const data = results.data;
+          // Filter out empty rows
+          const filteredData = data.filter(row => Object.values(row).some(cell => cell !== ''));
+          
+          // Build the table header
+          let theadHTML = '<tr>';
+          const headers = Object.keys(filteredData[0]);
+          headers.forEach(header => {
+            theadHTML += `<th>${header}</th>`;
+          });
+          theadHTML += '</tr>';
+          $('#csv-table thead').html(theadHTML);
+          
+          // Build table rows
+          let tbodyHTML = '';
+          filteredData.forEach(row => {
+            tbodyHTML += '<tr>';
+            headers.forEach(header => {
+              tbodyHTML += `<td>${row[header]}</td>`;
+            });
+            tbodyHTML += '</tr>';
+          });
+          $('#csv-table tbody').html(tbodyHTML);
+          
+          
+          $('#csv-table').DataTable();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+
+
+
+

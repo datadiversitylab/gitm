@@ -1,0 +1,58 @@
+"","Species","Galapagos..binary","Island..multistate","Carapace.length","Latitude.Longitude","Island.size"
+"1","Aldabrachelys gigantea",0,2,119,"",0
+"2","Aldabrachelys grandidieri",0,2,125,"",0
+"3","Astrochelys radiata",0,2,40,"",0
+"4","Astrochelys yniphora",0,2,44.6,"",0
+"5","Centrochelys sulcata",0,1,85,"",0
+"6","Chelonoidis abingdonii",1,2,98,"0.615253, -90.790952",60
+"7","Chelonoidis becki",1,2,105,"0.041399, -91.337196",4670
+"8","Chelonoidis carbonarius",0,1,59.3,"",0
+"9","Chelonoidis chilensis",0,1,45,"",0
+"10","Chelonoidis darwini",1,2,96.5,"-0.287703, -90.620062",572
+"11","Chelonoidis denticulatus",0,0,82,"",0
+"12","Chelonoidis duncanensis",1,2,84,"-0.613271, -90.656404",18
+"13","Chelonoidis hoodensis",1,2,81.3,"-1.374332, -89.658942",60
+"14","Chelonoidis phantastica",1,2,86,"-0.370006, -91.452798",642
+"15","Chelonoidis porteri",1,2,150,"-0.584209, -90.254497",986.008
+"16","Chelonoidis vicina",1,2,125,"-0.942820, -91.392504",4670
+"17","Chersina angulata",0,1,22.5,"",0
+"18","Cylindraspis indica",0,2,110,"",2512
+"19","Cylindraspis inepta",0,2,100,"",2041
+"20","Cylindraspis peltastes",0,2,42,"",108
+"21","Cylindraspis triserrata",0,2,110,"",2041
+"22","Cylindraspis vosmaeri",0,2,50,"",108
+"23","Geochelone elegans",0,1,38,"",0
+"24","Geochelone platynota ",0,1,35,"",0
+"25","Gopherus agassizii",0,1,40,"",0
+"26","Gopherus berlandieri",0,1,24,"",0
+"27","Gopherus flavomarginatus",0,1,40,"",0
+"28","Gopherus morafkai",0,1,29.9,"",0
+"29","Gopherus polyphemus",0,1,38,"",0
+"30","Homopus areolatus",0,1,30,"",0
+"31","Homopus boulengeri",0,1,11,"",0
+"32","Homopus femoralis",0,1,16,"",0
+"33","Homopus signatus",0,1,10.6,"",0
+"34","Indotestudo elongata",0,0,36,"",0
+"35","Indotestudo forstenii",0,1,31,"",0
+"36","Indotestudo travancorica",0,1,33.1,"",0
+"37","Kinixys belliana",0,1,23,"",0
+"38","Kinixys erosa",0,1,40,"",0
+"39","Kinixys homeana",0,1,22.3,"",0
+"40","Kinixys lobatsiana",0,1,20,"",0
+"41","Kinixys natalensis",0,1,20.6,"",0
+"42","Kinixys spekii",0,1,22,"",0
+"43","Kinixys zombensis",0,0,22,"",0
+"44","Malacochersus tornieri",0,1,16.7,"",0
+"45","Manouria emys",0,1,60,"",0
+"46","Manouria impressa",0,1,35,"",0
+"47","Psammobates geometricus",0,1,16.5,"",0
+"48","Psammobates oculiferus",0,1,14.7,"",0
+"49","Psammobates tentorius",0,1,14.5,"",0
+"50","Pyxis arachnoides",0,2,15,"",0
+"51","Pyxis planicauda",0,2,16,"",0
+"52","Stigmochelys pardalis",0,1,72,"",0
+"53","Testudo graeca",0,0,30,"",0
+"54","Testudo hermanni",0,0,25,"",0
+"55","Testudo horsfieldii",0,1,28,"",0
+"56","Testudo kleinmanni",0,1,14,"",0
+"57","Testudo marginata",0,0,40,"",0
