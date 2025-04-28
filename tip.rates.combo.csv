@@ -1,4 +1,4 @@
-Species,On_Galapagos,Carapace_Length,Island_Size,Turnover,Net_Diversification,Speciation,Extinct_Frac,Extinction
+Species,On_Galapagos,Carapace_Length(cm),Island_Size(km^2),Turnover,Net_Diversification,Speciation,Extinct_Frac,Extinction
 Aldabrachelys gigantea,0,119,0,0.053272711,0.051957978,0.052615345,0.017839674,0.000657366
 Aldabrachelys grandidieri,0,125,0,0.053272711,0.051957978,0.052615345,0.017839674,0.000657366
 Astrochelys radiata,0,40,0,0.053265908,0.051951175,0.052608541,0.017839674,0.000657366

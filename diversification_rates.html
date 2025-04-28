@@ -32,6 +32,13 @@
       padding: 20px;
       color: white;
     }
+    footer {
+      background-color: #00796b;
+      color: white;
+      padding: 20px;
+      font-size: 14px;
+      margin-top: 40px;
+    }
     .header-container {
       display: flex;
       align-items: center;
@@ -95,6 +102,9 @@
     ol {
       list-style-position: inside;
     }
+    .sectionloc { 
+      margin-top: 2rem; 
+    }
     @media (max-width: 768px) {
       .header-container {
         flex-direction: column;
@@ -137,7 +147,7 @@
     <!-- Bootstrap Navbar -->
     <nav class="navbar navbar-expand-md navbar-dark sticky-top" style="background-color: #004d40;">
       <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -147,8 +157,7 @@
             <li class="nav-item"><a class="nav-link" href="island_data.html">Island Data</a></li>
             <li class="nav-item"><a class="nav-link" href="diversification_rates.html">Diversification Rates</a></li>
             <li class="nav-item"><a class="nav-link" href="research_paper.pdf" target="_blank">Research Paper</a></li>
-            <li class="nav-item"><a class="nav-link" href="teambios.html">References</a></li>
-            <li class="nav-item"><a class="nav-link" href="teambios.html">Team Bios &amp; Contact</a></li>
+            <li class="nav-item"><a class="nav-link" href="teambios.html">Team Bios</a></li>
           </ul>
         </div>
       </div>
@@ -159,20 +168,20 @@
     <h1>Diversification Rates Results</h1>
     <div class="container-main">
       <img src="colortree_2.0.png" alt="Phylogeny" class="img-fluid">
-    </div>
-    <div class="container-main">
       <section class="sectionloc">
         <h2>What does this phylogenetic tree signify?</h2>
         <p>This figure shows a phylogenetic tree of tortoise species. The colors represent the diversification rates of the species, with red indicating high diversification rates and blue indicating low diversification rates. The Galapagos tortoise species are highlighted in red, indicating their higher diversification rates compared to other tortoise species.</p>
       </section>
     </div>
     <div class="container-main">
+      <!-- Download button for CSV -->
+      <div class="d-flex justify-content-end mb-3">
+        <a href="tip.rates.combo.csv" download class="btn btn-primary">Download CSV</a>
+      </div>
       <table id="csv-table" class="display">
         <thead></thead>
         <tbody></tbody>
       </table>
-    </div>
-    <div class="container-main">
       <section class="sectionloc">
         <h2>What does this table signify?</h2>
         <p>Here we present a table that includes data for tortoise species that live across the world. In our project, we focus on tortoise species that live on the Galapagos Islands. In this analysis, we used MiSSE (Missing State Speciation and Extinction) to estimate diversification rates for the tortoise species presented here. Tortoise species that live on the Galapagos Islands (a 1 in the "On_Galapagos" column) have much higher diversification rates (seen in the "Net_Diversification" column) compared to the other tortoise species in our dataset. To sort the data, click on the column names.</p>
@@ -180,8 +189,8 @@
           <ol>
             <li>Species: various tortoise species around the world.</li>
             <li>On_Galapagos: whether the species lives on the Galapagos Islands (1) or not (0).</li>
-            <li>Carapace_Length: the average carapace length of the species.</li>
-            <li>Island_Size: the size of the island where the species is found.</li>
+            <li>Carapace_Length (cm): the average carapace length of the species in centimeters.</li>
+            <li>Island_Size (km²): the area of the island where the species is found.</li>
             <li>Turnover: the turnover rate of the species (Speciation + Extinction).</li>
             <li>Net_Diversification: the net diversification rate of the species (Speciation - Extinction).</li>
             <li>Speciation: the speciation rate of the species.</li>
@@ -191,11 +200,11 @@
         </p>
       </section>
     </div>
+
   </main>
 
   <!-- Scripts -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
   <script src="https://cdn.datatables.net/2.2.2/js/dataTables.min.js"></script>
@@ -204,19 +213,47 @@
       Papa.parse('tip.rates.combo.csv', {
         download: true,
         header: true,
+        transformHeader: function(h) {
+          if (h === 'Carapace_Length') return 'Carapace_Length (cm)';
+          if (h === 'Island_Size') return 'Island_Size (km²)';
+          return h;
+        },
         complete: function(results) {
-          const data = results.data.filter(row => Object.values(row).some(cell => cell !== ''));
-          let theadHTML = '<tr>' + Object.keys(data[0]).map(h => `<th>${h}</th>`).join('') + '</tr>';
-          $('#csv-table thead').html(theadHTML);
-          let tbodyHTML = data.map(row => '<tr>' + Object.values(row).map(cell => `<td>${cell}</td>`).join('') + '</tr>').join('');
-          $('#csv-table tbody').html(tbodyHTML);
+          const data = results.data.filter(r => Object.values(r).some(c => c !== ''));
+          const headers = results.meta.fields;
+          const speciesIdx = headers.indexOf('Species');
+          const galIdx = headers.indexOf('On_Galapagos');
+          const thead = '<tr>' + headers.map(h => `<th>${h}</th>`).join('') + '</tr>';
+          $('#csv-table thead').html(thead);
+          const rows = data.map(r => '<tr>' + headers.map((key, i) => {
+            const val = r[key];
+            if (i === speciesIdx) {
+              return `<td><i>${val}</i></td>`;
+            }
+            const num = parseFloat(val);
+            if (i === galIdx) {
+              return `<td>${parseInt(val, 10)}</td>`;
+            }
+            if (!isNaN(num)) {
+              return `<td>${num.toFixed(4)}</td>`;
+            }
+            return `<td>${val}</td>`;
+          }).join('') + '</tr>').join('');
+          $('#csv-table tbody').html(rows);
           $('#csv-table').DataTable();
         }
       });
     });
   </script>
+  <footer>
+    <p>&copy; 2025 Capstone Project GITM</p>
+    <p><strong>Acknowledgements:</strong> Special thanks to our professors, advisors, and the University of Arizona for supporting our project.</p>
+  </footer>
 </body>
 </html>
+
+
+
 
 
 
