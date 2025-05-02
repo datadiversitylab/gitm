@@ -31,7 +31,32 @@
         .submenu li a { font-size: 14px; padding: 10px; }
         .sectionloc { width: 80%; max-width: 800px; margin: 30px auto; padding: 20px; background-color: #f0f4c3; border-radius: 10px; font-size: 16px; }
         footer { background-color: #00796b; color: white; padding: 10px; font-size: 14px; }
+        .side-by-side {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.textbox {
+    background-color: #f0f4c3;
+    border-radius: 10px;
+    padding: 20px;
+    flex: 1;
+    min-width: 300px;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.textbox ul {
+    text-align: left;
+    padding-left: 20px;
+}
     </style>
+    
 </head>
 <body>
     <header>
@@ -62,6 +87,18 @@
     </section>
 
     <iframe src = "i_map_galapagos.html" width= "70%" height = "600" frameborder ="0"></iframe>
+
+<section class="sectionloc">
+	<h3>Body Length By Island Interactive Plot</h3>
+	<ul>
+		<li>When you hover over an island you can see the species and carapace length</li>
+		<li>Visualizes average tortoise body lengths across different Galapagos islands</li>
+        <li>Circle size and color indicate body size: larger, yellow circles represent bigger tortoises
+        and smaller purple circles represent smaller tortoises</li>
+        <li>Highlights spatial trends that may reflect ecological or environmental influences</li>
+    </ul>
+</section>
+
 <p>
 </p>
 
@@ -72,6 +109,27 @@
 
 <img src="regression.png" alt="Body Size Across Groups" style="width: 45%;height: 45%;">
 <img src="green_body_size_across_groups.png" alt="Body Size Across Groups" style="width: 45%;height: 45%;">
+
+<p>
+</p>
+
+<div class="side-by-side">
+    <div class="textbox">
+        <h3>Body Length vs Island Size Plot Insights</h3>
+        <ul>
+            <li>Displays a possible positive relationship between tortoise body length and island size</li>
+            <li>Each point represents data from a different island</li>
+            <li>The regression line shows a potential ecological scaling effect</li>
+        </ul>
+    </div>
+    <div class="textbox">
+        <h3>Body Size Across Groups Plot Insights</h3>
+        <ul>
+            <li>Compares Galapagos and non-Galapagos tortoise sizes using a boxplot</li>
+            <li>Galapagos tortoises tend to be larger</li>
+        </ul>
+    </div>
+</div>
 
 <p>
 </p>
