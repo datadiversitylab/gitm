@@ -1,115 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tortoise Plot</title>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-  
-  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-    	.navbar-nav { list-style: none; padding-left: 0; margin: 0; }
-    	
-        body {
-            font-family: 'Open Sans', sans-serif;
-            background: linear-gradient(to right, #66bb6a, #42a5f5);
-            color: #000000;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-        }
-        header {
-            padding: 20px;
-            color: white;
-        }
-    
-    	.header-container {
-      	display: flex;
-      	align-items: center;
-      	justify-content: center;
-      	flex-wrap: wrap;
-    	}
-    	.logo-container, .right-placeholder {
-      	flex: 0 0 150px;
-    	}
-    	.logo, img {
-      	max-width: 100%;
-      	height: auto;
-      	display: block;
-      	margin: 0 auto;
-    	}
-    	.header-text {
-      	flex: 1;
-      	text-align: center;
-      	}
-        .title { font-size: 36px; margin: 15px 0; font-family: 'Lato', sans-serif; }
-        .subtitle { font-size: 18px; margin: 10px 0; }
-        .team-members { font-size: 12px; margin-top: 15px; font-style: italic; }
-        nav { margin-top: 15px; }
-        nav ul { list-style: none; display: flex; gap: 20px; margin: 0; padding: 0; }
-        nav ul li a { text-decoration: none; color: white; font-size: 16px; padding: 15px 15px; }
-        nav ul li a:hover { background-color: #00695c; border-radius: 5px; }
-        .submenu { display: none; position: absolute; background-color: #00695c; border-radius: 5px; list-style: none; margin-top: 10px; }
-        nav ul li:hover .submenu { display: block; }
-        .submenu li a { font-size: 14px; padding: 10px; }
-        .sectionloc { width: 80%; max-width: 800px; margin: 30px auto; padding: 20px; background-color: #f0f4c3; border-radius: 10px; font-size: 16px; }
-        footer { background-color: #00796b; color: white; padding: 10px; font-size: 14px; }
-        .side-by-side {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 20px;
-            width: 90%;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        .textbox {
-            background-color: #f0f4c3;
-            border-radius: 10px;
-            padding: 20px;
-            flex: 1;
-            min-width: 300px;
-            box-sizing: border-box;
-            text-align: left;
-        }
-        .textbox ul {
-            text-align: left;
-            padding-left: 20px;
-        }
-        .regression-table {
-            background-color: #f0f4c3;
-            border-radius: 10px;
-            padding: 20px;
-            flex: 1;
-            min-width: 300px;
-            box-sizing: border-box;
-        }
-        .regression-table table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        .regression-table th, .regression-table td {
-            border: 1px solid #999;
-            padding: 8px;
-            text-align: center;
-        }
-        .regression-table th {
-            background-color: #c5e1a5;
-        }
-        @media (max-width: 768px) {
-      	.header-container { flex-direction: column; padding: 10px; }
-      	.logo-container, .right-placeholder { flex: 0 0 auto; margin-bottom: 10px; }
-      	.title { font-size: 28px; }
-      	.subtitle { font-size: 16px; }
-    	}
-    </style>
-</head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tortoise Plot</title>
+  <!--  Favicon -->
+  <link rel="icon" type="image/png" href="/gitm/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/gitm/favicon.svg" />
+  <link rel="shortcut icon" href="/gitm/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/gitm/apple-touch-icon.png" />
+  <link rel="manifest" href="/gitm/site.webmanifest" />
 
+  <!-- Plotly -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">  
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+  <style>
+    .navbar-nav { list-style: none; padding-left: 0; margin: 0; }
+    body { font-family: 'Open Sans', sans-serif; background: linear-gradient(to right, #66bb6a, #42a5f5); color: #000; margin: 0; text-align: center; }
+    header { padding: 20px; color: white; }
+    .header-container { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; }
+    .logo-container, .right-placeholder { flex: 0 0 150px; }
+    .logo, img { max-width: 100%; height: auto; display: block; margin: 0 auto; }
+    .header-text { flex: 1; text-align: center; }
+    .title { font-size: 36px; margin: 10px 0; font-family: 'Lato', sans-serif; }
+    .subtitle { font-size: 18px; margin: 5px 0; }
+    .team-members { font-size: 12px; margin-top: 10px; font-style: italic; }
+    .sectionloc { width: 80%; max-width: 800px; margin: 30px auto; padding: 20px; background-color: #f0f4c3; border-radius: 10px; font-size: 16px; text-align: left; }
+    .side-by-side { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; width: 90%; max-width: 1000px; margin: 0 auto; }
+    .textbox { background-color: #f0f4c3; border-radius: 10px; padding: 20px; flex: 1; min-width: 300px; box-sizing: border-box; text-align: left; }
+    .textbox h3 { text-align: center; }
+    .textbox ul { padding-left: 20px; }
+    .regression-table { background-color: #f0f4c3; border-radius: 10px; padding: 20px; flex: 1; min-width: 300px; }
+    .regression-table table { width: 100%; border-collapse: collapse; }
+    .regression-table th, .regression-table td { border: 1px solid #999; padding: 8px; text-align: center; }
+    .regression-table th { background-color: #c5e1a5; }
+    footer { background-color: #00796b; color: white; padding: 10px; font-size: 14px; margin-top: 40px; }
+    @media (max-width: 768px) {
+      .header-container { flex-direction: column; padding: 10px; }
+      .logo-container, .right-placeholder { flex: 0 0 auto; margin-bottom: 10px; }
+      .title { font-size: 28px; }
+      .subtitle { font-size: 16px; }
+      .sectionloc { width: 100%; padding: 15px; }
+    }
+  </style>
+</head>
 <body>
-    <header>
+  <header>
     <div class="header-container">
       <div class="logo-container">
         <img src="tortoisenobackground.png" alt="Logo" class="logo">
@@ -122,124 +63,84 @@
       <div class="right-placeholder"></div>
     </div>
 
+    <!-- CHANGE: Navbar settings replaced with index page version -->
     <nav class="navbar navbar-expand-md navbar-dark sticky-top" style="background-color: #004d40;">
       <div class="container-fluid">
-
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav mx-auto">
             <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Length Data</a></li>
+            <li class="nav-item"><a class="nav-link" href="length_data.html">Length Data</a></li>
             <li class="nav-item"><a class="nav-link" href="island_data.html">Island Data</a></li>
             <li class="nav-item"><a class="nav-link" href="diversification_rates.html">Diversification Rates</a></li>
-            <li class="nav-item"><a class="nav-link" href="#" target="_blank">Research Paper</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">References</a></li>
-            <li class="nav-item"><a class="nav-link" href="team_contact.html">Team Bios &amp; Contact</a></li>
+            <li class="nav-item"><a class="nav-link" href="research_paper.pdf" target="_blank">Research Paper</a></li>
+            <li class="nav-item"><a class="nav-link" href="team_contact.html">Team Bios</a></li>
           </ul>
         </div>
       </div>
     </nav>
   </header>
 
-<!--Box Plot -->
-
-    <section class="sectionloc">
-        <h2>Galapagos vs Other Body Size Plot</h2>
-        <div id="tortoisePlot"></div>
-    </section>
-
-    <img src="green_body_size_across_groups.png" alt="Body Size Across Groups" style="width: 60%;height: 69%;">
-
-	<section class="sectionloc">
-    	<div class="side-by-side">
-    		<div class="textbox">
-            	<h3>Body Length vs Island Size Plot Insights</h3>
-            	<ul>
-                	<li>Compares Galapagos and non-Galapagos tortoise sizes using a boxplot</li>
-                	<li>Galapagos tortoises tend to be larger</li>
-            	</ul>
-        	</div>
-    	</div>
-    </section>
-    
-<!--Interactive Plot -->
-
-    <section class="sectionloc">
-        <h2>Interactive Galapagos Island Plot</h2>
-        <div id="tortoisePlot"></div>
-    </section>
-
-    <iframe src="i_map_galapagos.html" width="50%" height="600" frameborder="0"></iframe>
-
-    <section class="sectionloc">
-        <div class="textbox">
-            <h3>Body Length By Island Interactive Plot</h3>
-            <ul>
-                <li>When you hover over an island you can see the species and carapace length</li>
-                <li>Visualizes average tortoise body lengths across different Galapagos islands</li>
-                <li>Circle size and color indicate body size: larger, yellow circles represent bigger tortoises and smaller purple circles represent smaller tortoises</li>
-                <li>Highlights spatial trends that may reflect ecological or environmental influences</li>
-            </ul>
-        </div>
-    </section>
-
-<!--Regression Plot -->
-
-    <section class="sectionloc">
-        <h2>Body Length vs Island Size w Regression Plot</h2>
-        <div id="tortoisePlot"></div>
-    </section>
-
-    <img src="regression.png" alt="Body Size Across Groups" style="width: 50%;height: 45%;">
-	
-	<section class="sectionloc">
-    	<div class="side-by-side">
-        	<div class="textbox">
-            	<h3>Body Length vs Island Size Plot Insights</h3>
-            	<ul>
-                	<li>Displays a possible positive relationship between tortoise body length and island size</li>
-                	<li>Each point represents data from a different island</li>
-                	<li>The regression line shows a potential ecological scaling effect</li>
-            	</ul>
-        	</div>
-
-<p>
-</p>
-
-        <div class="regression-table">
-            <h3>Regression Coefficients</h3>
-            <table>
-                <tr>
-                    <th>Variable</th>
-                    <th>Coefficient</th>
-                    <th>P-value</th>
-                </tr>
-                <tr>
-                    <td>Intercept</td>
-                    <td>87.608794</td>
-                    <td>0.000000192</td>
-                </tr>
-                <tr>
-                    <td>Island Size</td>
-                    <td>0.007423</td>
-                    <td>0.115</td>
-                </tr>
-            </table>
-        </div>
+  <!-- Box Plot Section -->
+  <section class="sectionloc">
+    <h2>Galapagos vs Other Body Size Plot</h2>
+    <div id="tortoisePlot1"></div>
+    <img src="blue_body_size_across_groups.png" alt="Body Size Across Groups" style="width: 80%;">
+    <div class="textbox">
+      <h3>Body Length vs Island Size Plot Insights</h3>
+      <ul>
+        <li>Compares Galapagos and non-Galapagos tortoise sizes using a boxplot</li>
+        <li>Galapagos tortoises tend to be larger</li>
+      </ul>
     </div>
-</section>
+  </section>
 
-<p>
-</p>
+  <!-- Interactive Plot Section -->
+  <section class="sectionloc">
+    <h2>Interactive Galapagos Island Plot</h2>
+    <iframe src="i_map_galapagos.html" width="90%" height="500" frameborder="0"></iframe>
+    <div class="textbox">
+      <h3>Body Length By Island Interactive Plot Insights</h3>
+      <ul>
+        <li>When you hover over an island you can see the species and carapace length</li>
+        <li>Visualizes average tortoise body lengths across different Galapagos islands</li>
+        <li>Circle size and color indicate body size: larger, yellow circles represent bigger tortoises and smaller purple circles represent smaller tortoises</li>
+        <li>Highlights spatial trends that may reflect ecological or environmental influences</li>
+      </ul>
+    </div>
+  </section>
 
+  <!-- Regression Plot Section -->
+  <section class="sectionloc">
+    <h2>Body Length vs Island Size w Regression Plot</h2>
+    <img src="regression.png" alt="Regression Plot" style="width: 80%;">
+    <div class="side-by-side">
+      <div class="textbox">
+        <h3>Body Length vs Island Size Plot Insights</h3>
+        <ul>
+          <li>Displays a possible positive relationship between tortoise body length and island size</li>
+          <li>Each point represents data from a different island</li>
+          <li>The regression line shows a potential ecological scaling effect</li>
+        </ul>
+      </div>
+      <div class="regression-table">
+        <h3>Regression Coefficients</h3>
+        <table>
+          <tr><th>Variable</th><th>Coefficient</th><th>P-value</th></tr>
+          <tr><td>Intercept</td><td>87.608794</td><td>0.000000192</td></tr>
+          <tr><td>Island Size</td><td>0.007423</td><td>0.115</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
 
-    <footer>
-        <p>&copy; 2025 Capstone Project GITM</p>
-        <p><strong>Acknowledgements:</strong> Special thanks to our professors, advisors, and the University of Arizona for supporting our project. Thank you to the Data Diversity Lab for helping in the creation of this capstone project. We also acknowledge the Galápagos Conservancy and researchers whose data and insights were invaluable.</p>
-    </footer>
-    
+  <footer>
+    <p>&copy; 2025 Capstone Project GITM</p>
+    <p><strong>Acknowledgements:</strong>  Acknowledgements: Special thanks to our professors, advisors, and the University of Arizona for supporting our project. Thank you to the Data Diversity Lab for helping in the creation of this capstone project. We also acknowledge the GalÃ¡pagos Conservancy and researchers whose data and insights were invaluable.</p>
+  </footer>
+
+  
 </body>
 </html>
