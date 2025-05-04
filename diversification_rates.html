@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>CSV Data Table - Galapagos Islands Testudinidae Macroevolution</title>
+  <title>CSV Data Table - Galápagos Islands Testudinidae Macroevolution</title>
   <!-- favicon -->
   <link rel="icon" type="image/png" href="/gitm/favicon-96x96.png" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="/gitm/favicon.svg" />
@@ -142,7 +142,7 @@
         <img src="tortoisenobackground.png" alt="Logo" class="logo">
       </div>
       <div class="header-text">
-        <h1 class="title">Galapagos Islands Testudinidae Macroevolution</h1>
+        <h1 class="title">Galápagos Islands Testudinidae Macroevolution</h1>
         <h2 class="subtitle">Macro-evolutionary Patterns of Giant Tortoises</h2>
         <p class="team-members">Authors: Paige Cherry, Sara Cielaszyk, Hubert Kasprzycki &amp; Eleanor Tuck</p>
       </div>
@@ -174,7 +174,7 @@
       <img src="colortree_2.0.png" alt="Phylogeny" class="img-fluid">
       <section class="sectionloc">
         <h2>What does this phylogenetic tree signify?</h2>
-        <p>This figure shows a phylogenetic tree of tortoise species. The colors represent the diversification rates of the species, with red indicating high diversification rates and blue indicating low diversification rates. The Galapagos tortoise species are highlighted in red, indicating their higher diversification rates compared to other tortoise species.</p>
+        <p>This figure shows a phylogenetic tree of tortoise species. The colors represent the diversification rates of the species, with red indicating high diversification rates and blue indicating low diversification rates. The Galápagos tortoise species are highlighted in red, indicating their higher diversification rates compared to other tortoise species.</p>
       </section>
     </div>
     <div class="container-main">
@@ -188,11 +188,11 @@
       </table>
       <section class="sectionloc">
         <h2>What does this table signify?</h2>
-        <p>Here we present a table that includes data for tortoise species that live across the world. In our project, we focus on tortoise species that live on the Galapagos Islands. In this analysis, we used MiSSE (Missing State Speciation and Extinction) to estimate diversification rates for the tortoise species presented here. Tortoise species that live on the Galapagos Islands (a 1 in the "On_Galapagos" column) have much higher diversification rates (seen in the "Net_Diversification" column) compared to the other tortoise species in our dataset. To sort the data, click on the column names.</p>
+        <p>Here we present a table that includes data for tortoise species that live across the world. In our project, we focus on tortoise species that live on the Galápagos Islands. In this analysis, we used MiSSE (Missing State Speciation and Extinction) to estimate diversification rates for the tortoise species presented here. Tortoise species that live on the Galápagos Islands (a 1 in the "On_Galápagos" column) have much higher diversification rates (seen in the "Net_Diversification" column) compared to the other tortoise species in our dataset. To sort the data, click on the column names.</p>
         <p>Column definitions:
           <ol>
             <li>Species: various tortoise species around the world.</li>
-            <li>On_Galapagos: whether the species lives on the Galapagos Islands (1) or not (0).</li>
+            <li>On_Galápagos: whether the species lives on the Galápagos Islands (1) or not (0).</li>
             <li>Carapace_Length (cm): the average carapace length of the species in centimeters.</li>
             <li>Island_Size (km²): the area of the island where the species is found.</li>
             <li>Turnover: the turnover rate of the species (Speciation + Extinction).</li>
@@ -226,7 +226,7 @@
           const data = results.data.filter(r => Object.values(r).some(c => c !== ''));
           const headers = results.meta.fields;
           const speciesIdx = headers.indexOf('Species');
-          const galIdx = headers.indexOf('On_Galapagos');
+          const galIdx = headers.indexOf('On_Galápagos');
           const thead = '<tr>' + headers.map(h => `<th>${h}</th>`).join('') + '</tr>';
           $('#csv-table thead').html(thead);
           const rows = data.map(r => '<tr>' + headers.map((key, i) => {
